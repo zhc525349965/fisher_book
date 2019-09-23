@@ -7,6 +7,7 @@ from flask import jsonify
 
 from helper import is_isbn_or_key
 from yushu_book import YuShuBook
+from fisher import app
 
 
 @app.route('/book/search/<q>/<page>')
