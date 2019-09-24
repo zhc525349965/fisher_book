@@ -4,10 +4,9 @@
 #      Author: Mario
 #    Datetime: 2019-09-24 08:27
 from wtforms import Form, StringField, IntegerField
-from wtforms.validators import length, required, NumberRange, Email
+from wtforms.validators import length, NumberRange, DataRequired
 
 
 class SearchForm(Form):
-    q = StringField(validators=[required(), length(min=1, max=30)])
+    q = StringField(validators=[DataRequired(), length(min=1, max=30)])
     page = IntegerField(validators=[NumberRange(min=1, max=99)], default=1)
-    email = StringField(validators=[Email()])
