@@ -3,7 +3,7 @@
 # Description: 存储关于调用书籍接口的类
 #      Author: Mario
 #    Datetime: 2019-09-23 07:51
-from httper import HTTP
+from app.libs.httper import HTTP
 from flask import current_app
 
 

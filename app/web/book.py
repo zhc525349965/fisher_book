@@ -7,8 +7,8 @@ from flask import jsonify, request
 
 from app.forms.book import SearchForm
 from app.web.create_blueprint import web
-from helper import is_isbn_or_key
-from yushu_book import YuShuBook
+from app.libs.helper import is_isbn_or_key
+from app.spider.yushu_book import YuShuBook
 
 
 @web.route('/book/search', methods=['GET','POST'])
