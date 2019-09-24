@@ -11,7 +11,7 @@ from helper import is_isbn_or_key
 from yushu_book import YuShuBook
 
 
-@web.route('/book/search')
+@web.route('/book/search', methods=['GET','POST'])
 def search():
     form = SearchForm(request.args)
     if form.validate():
@@ -19,7 +19,6 @@ def search():
         page = form.page.data
 
         result = None
-
         isbn_or_key = is_isbn_or_key(q)
 
         if isbn_or_key == 'isbn':
