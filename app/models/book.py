@@ -3,10 +3,13 @@
 # Description: 书籍的业务模型
 #      Author: Mario
 #    Datetime: 2019-09-25 07:58
-from sqlalchemy import Column, Integer, String, Date
+from sqlalchemy import Column, Integer, String
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
 
 
-class Book:
+class Book(db.Model):
     # 整数类型 主键 自增长
     id = Column(Integer, primary_key=True, autoincrement=True)
     # 字符串类型，长度50 不可以为空
