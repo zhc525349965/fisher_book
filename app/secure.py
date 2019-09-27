@@ -6,3 +6,4 @@
 
 DEBUG = True
 SQLALCHEMY_DATABASE_URI = 'mysql+cymysql://root:123456@localhost:3306/new_fisher'
+SQLALCHEMY_TRACK_MODIFICATIONS = True
