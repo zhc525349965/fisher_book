@@ -75,3 +75,5 @@ fabric.properties
 app/libs/__pycache__/
 app/models/__pycache__/
 app/spider/__pycache__/
+__pycache__/
+app/__pycache__/

@@ -14,7 +14,6 @@ def create_app():
     app.config.from_object('app.secure')
     app.config.from_object('app.setting')
     register_blueprint(app)
-
     # 将sql alchemy对象注册到APP实例上
     db.init_app(app)
     with app.app_context():
