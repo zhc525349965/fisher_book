@@ -5,7 +5,7 @@
 #    Datetime: 2019-09-23 08:09
 import json
 
-from flask import jsonify, request
+from flask import jsonify, request, render_template
 
 from app.forms.book import SearchForm
 from app.view_models.book import BookCollection
@@ -34,3 +34,12 @@ def search():
         return json.dumps(books, default=lambda o: o.__dict__)
         # return jsonify(books.__dict__)
     return jsonify(form.errors)
+
+
+@web.route('/test')
+def test():
+    r = {
+        'name': 'Mario',
+        'age': 18
+    }
+    return render_template('test.html', data=r)
