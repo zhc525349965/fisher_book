@@ -26,7 +26,7 @@ class YuShuBook:
         url = (self.base_url + self.keyword_url).format(keyword, current_app.config['PER_PAGE'],
                                                         self.calculate_start(page))
         result = HTTP.get(url=url)
-        self.__fill_collection((result))
+        self.__fill_collection(result)
         return result
 
     def calculate_start(self, page):
@@ -34,7 +34,7 @@ class YuShuBook:
 
     def __fill_single(self, data):
         if data:
-            self.total = data['total']
+            self.total = 1
             self.books.append(data)
 
     def __fill_collection(self, data):
