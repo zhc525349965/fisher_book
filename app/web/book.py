@@ -3,9 +3,8 @@
 # Description: 存放book视图函数
 #      Author: Mario
 #    Datetime: 2019-09-23 08:09
-import json
 
-from flask import jsonify, request, render_template
+from flask import request, render_template, flash
 
 from app.forms.book import SearchForm
 from app.view_models.book import BookCollection
@@ -31,10 +30,19 @@ def search():
             yushu_book.search_by_keyword(q, page)
 
         books.fill(yushu_book, q)
-        return json.dumps(books, default=lambda o: o.__dict__)
-        # return jsonify(books.__dict__)
-    return jsonify(form.errors)
+        # return json.dumps(books, default=lambda o: o.__dict__)
 
+    else:
+        # 用消息闪现将提示输出到页面上，取代之前的jsonify
+        flash('搜索的关键字不符合要求，请重新输入关键字')
+        # return jsonify(form.errors)
+    # 将视图函数的返回放到最外面，解决validate没有验证通过时没有返回的问题
+    return render_template('search_result.html', books=books)
+
+
+@web.route('/book/<isbn>/detail')
+def book_detail():
+    pass
 
 @web.route('/test')
 def test():
@@ -42,4 +50,5 @@ def test():
         'name': 'Mario',
         'age': 18
     }
+    flash('Hello,Mario', category='test')
     return render_template('test.html', data=r)
