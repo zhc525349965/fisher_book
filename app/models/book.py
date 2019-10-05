@@ -1,12 +1,11 @@
 # -*- coding: UTF-8 -*-
 
-# Description: 书籍的业务模型
+# Description: 书籍的业务模型,用于在数据库对应数据
 #      Author: Mario
 #    Datetime: 2019-09-25 07:58
 from sqlalchemy import Column, Integer, String
-from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
+from app.models.base import db
 
 
 class Book(db.Model):
