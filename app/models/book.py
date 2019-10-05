@@ -5,10 +5,10 @@
 #    Datetime: 2019-09-25 07:58
 from sqlalchemy import Column, Integer, String
 
-from app.models.base import db
+from app.models.base import Base
 
 
-class Book(db.Model):
+class Book(Base):
     # 整数类型 主键 自增长
     id = Column(Integer, primary_key=True, autoincrement=True)
     # 字符串类型，长度50 不可以为空

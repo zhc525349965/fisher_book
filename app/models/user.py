@@ -3,11 +3,11 @@
 # Description: $Description$
 #      Author: Mario
 #    Datetime: 2019-10-05 11:43
-from app.models.base import db
+from app.models.base import Base
 from sqlalchemy import Column, Integer, String, Boolean, Float
 
 
-class User(db.Model):
+class User(Base):
     # 整数类型 主键
     id = Column(Integer, primary_key=True)
     # 字符串类型，长度24 不可以为空

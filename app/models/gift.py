@@ -3,12 +3,12 @@
 # Description: $Description$
 #      Author: Mario
 #    Datetime: 2019-10-05 11:44
-from app.models.base import db
+from app.models.base import Base
 from sqlalchemy import Column, Integer, Boolean, ForeignKey, String
 from sqlalchemy.orm import relationship
 
 
-class Gift(db.Model):
+class Gift(Base):
     id = Column(Integer, primary_key=True)
     launched = Column(Boolean, default=False)
 
