@@ -11,6 +11,7 @@ db = SQLAlchemy()
 
 
 class Base(db.Model):
+    __abstract__ = True
     # 创建时间， Coloum后面指定在数据中的字段名称
     create_time = Column('create_time', Integer)
     # 状态字段， 1为正常

@@ -3,11 +3,12 @@
  微信公众号：林间有风
 """
 from app.web.create_blueprint import web
+from flask import render_template
 
 
 @web.route('/register', methods=['GET', 'POST'])
 def register():
-    pass
+    return render_template('auth/register.html', form={'data': {}})
 
 
 @web.route('/login', methods=['GET', 'POST'])
