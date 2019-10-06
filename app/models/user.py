@@ -5,7 +5,7 @@
 #    Datetime: 2019-10-05 11:43
 from app.models.base import Base
 from sqlalchemy import Column, Integer, String, Boolean, Float
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 class User(Base):
@@ -15,8 +15,8 @@ class User(Base):
     nickname = Column(String(24), nullable=False)
     # 字符串类型，长度18 unique指定不可重复，独一无二
     phone_number = Column(String(18), unique=True)
-    # __password属性，在表中字段名称为password
-    _password = Column('password', String(128))
+    # __password属性，在表中字段名称为password, 不能为空
+    _password = Column('password', String(128), nullable=False)
     # 字符串类型，长度50 不可重复 不可为空
     email = Column(String(50), unique=True, nullable=False)
     # 布尔行，默认值为false
@@ -39,3 +39,6 @@ class User(Base):
     @password.setter
     def password(self, raw):
         self._password = generate_password_hash(raw)
+
+    def check_password(self, raw):
+        return check_password_hash(self._password, raw)
