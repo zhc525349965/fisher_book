@@ -24,8 +24,11 @@ def create_app():
         db.create_all()
 
     # 将LoginManager注册到APP实例上
-
     login_manager.init_app(app=app)
+    # 指定登录页面（在未登录时打开需要登录的页面，会自动跳转到该页面）
+    login_manager.login_view = 'web.login'
+    # 指定跳转到登录页面时flash的消息内容
+    login_manager.login_message = '请先登录或注册'
     return app
 
 
