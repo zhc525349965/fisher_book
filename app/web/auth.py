@@ -2,11 +2,11 @@
  Created by 七月 on 2018/1/26.
  微信公众号：林间有风
 """
-from app.forms.auth import RegisterForm
+from app.forms.auth import RegisterForm, LoginFrom
 from app.models.base import db
 from app.models.user import User
 from app.web.create_blueprint import web
-from flask import render_template, request
+from flask import render_template, request, redirect, url_for
 
 
 @web.route('/register', methods=['GET', 'POST'])
@@ -17,12 +17,16 @@ def register():
         user.set_attrs(form.data)
         db.session.add(user)
         db.session.commit()
+        redirect(url_for('web.login'))
     return render_template('auth/register.html', form=form)
 
 
 @web.route('/login', methods=['GET', 'POST'])
 def login():
-    pass
+    form = LoginFrom(request.form)
+    if request.method == 'POST' and form.validate():
+        pass
+    return render_template('auth/login.html', form=form)
 
 
 @web.route('/reset/password', methods=['GET', 'POST'])
