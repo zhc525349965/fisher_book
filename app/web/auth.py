@@ -14,11 +14,14 @@ from flask_login import login_user
 def register():
     form = RegisterForm(request.form)
     if request.method == 'POST' and form.validate():
-        user = User()
-        user.set_attrs(form.data)
-        db.session.add(user)
-        db.session.commit()
-        return redirect(url_for('web.login'))
+        try:
+            user = User()
+            user.set_attrs(form.data)
+            db.session.add(user)
+            db.session.commit()
+            return redirect(url_for('web.login'))
+        except Exception:
+            db.session.rollback()
     return render_template('auth/register.html', form=form)
 
 
