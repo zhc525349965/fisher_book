@@ -20,8 +20,9 @@ def register():
             db.session.add(user)
             db.session.commit()
             return redirect(url_for('web.login'))
-        except Exception:
+        except Exception as e:
             db.session.rollback()
+            raise e
     return render_template('auth/register.html', form=form)
 
 

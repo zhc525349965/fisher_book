@@ -28,8 +28,9 @@ def save_to_gifts(isbn):
             current_user.beans += current_app.config['BEANS_UPLOAD_ONE_BOOK']
             db.session.add(gift)
             db.session.commit()
-        except Exception:
+        except Exception as e:
             db.session.rollback()
+            raise e
     else:
         flash('这本书已经存在于赠送清单或心愿清单，请不要重复添加')
 
