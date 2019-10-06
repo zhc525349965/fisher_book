@@ -7,6 +7,7 @@ from app.models.base import db
 from app.models.user import User
 from app.web.create_blueprint import web
 from flask import render_template, request, redirect, url_for, flash
+from flask_login import login_user
 
 
 @web.route('/register', methods=['GET', 'POST'])
@@ -25,9 +26,9 @@ def register():
 def login():
     form = LoginFrom(request.form)
     if request.method == 'POST' and form.validate():
-        user = User.query.fliter_by(email=form.email.data).first()
+        user = User.query.filter_by(email=form.email.data).first()
         if user and user.check_password(form.password.data):
-            pass
+            login_user(user, remember=True)
         else:
             flash('账号或密码错误')
     return render_template('auth/login.html', form=form)

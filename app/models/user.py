@@ -6,9 +6,10 @@
 from app.models.base import Base
 from sqlalchemy import Column, Integer, String, Boolean, Float
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
 
-class User(Base):
+class User(Base, UserMixin):
     # 整数类型 主键
     id = Column(Integer, primary_key=True)
     # 字符串类型，长度24 不可以为空
