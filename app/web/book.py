@@ -7,6 +7,8 @@
 from flask import request, render_template, flash
 
 from app.forms.book import SearchForm
+from app.models.gift import Gift
+from app.models.wish import Wish
 from app.view_models.book import BookCollection, BookViewModel
 from app.web.create_blueprint import web
 from app.libs.helper import is_isbn_or_key
@@ -42,9 +44,18 @@ def search():
 
 @web.route('/book/<isbn>/detail')
 def book_detail(isbn):
+    # 是否存在于心愿清单或赠送清单，默认为false
+    has_in_gifts = False
+    has_in_wishs = False
+
+    # 取书籍数据
     yushu_book = YuShuBook()
     yushu_book.search_by_isbn(isbn)
     book = BookViewModel(yushu_book.first)
+
+    trade_gifts = Gift.query.filter_by(isbn=isbn, launched=False).all()
+    trade_wishs = Wish.query.filter_by(isbn=isbn, launched=False).all()
+
     return render_template('book_detail.html', book=book, wishes=[], gifts=[])
 
 
