@@ -2,7 +2,7 @@
  Created by 七月 on 2018/1/26.
  微信公众号：林间有风
 """
-from flask import current_app, flash
+from flask import current_app, flash, redirect, url_for
 
 from app.models.base import db
 from app.models.gift import Gift
@@ -29,6 +29,7 @@ def save_to_gifts(isbn):
             db.session.add(gift)
     else:
         flash('这本书已经存在于赠送清单或心愿清单，请不要重复添加')
+    return redirect(url_for('web.book_detail', isbn=isbn))
 
 
 @web.route('/gifts/<gid>/redraw')
