@@ -4,7 +4,7 @@
     <img
       class="QR-img" src="http://imglf6.nosdn0.126.net/img/YXcvYzgxMzh2bmNTNDNvYjZTZ0QrSzFmK3h3eHJ0aTM3ZDNxdURrWGxySThWQjlncGNMZWNnPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
       <img
-      class="QR-img" src="https://wx2.sinaimg.cn/mw690/b2664ecdgy1g7s5i3smybj20qe0db4kn.jpg">
+      class="QR-img" src="https://raw.githubusercontent.com/zhc525349965/fisher_book/master/app/image/lin-ui小程序.jpg">
   <!-- </a> -->
 </p>
 
