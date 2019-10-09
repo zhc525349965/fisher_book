@@ -2,7 +2,7 @@
 <p align="center">
   <!-- <a href="http://doc.mini.7yue.pro/"> -->
     <img
-      class="QR-img" src="http://imglf3.nosdn0.126.net/img/YUdIR2E3ME5weEZWVFhTU3I2YnRTVnB6VHZsbHR0SzJtMHNCK28rUE41QzljaFBmdmc2ZUFBPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
+      class="QR-img" src="http://imglf6.nosdn0.126.net/img/YXcvYzgxMzh2bmNTNDNvYjZTZ0QrSzFmK3h3eHJ0aTM3ZDNxdURrWGxySThWQjlncGNMZWNnPT0.jpg?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg">
   <!-- </a> -->
 </p>
 
