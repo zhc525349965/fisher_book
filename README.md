@@ -18,6 +18,7 @@
 
 <div align="center">
 
+![](https://wx2.sinaimg.cn/mw690/b2664ecdgy1g7s5i3smybj20qe0db4kn.jpg)
 ![](https://img.shields.io/badge/build-passing-00d508.svg)
 ![](https://img.shields.io/npm/v/lin-ui.svg)
 ![](https://img.shields.io/npm/dt/lin-ui.svg)
