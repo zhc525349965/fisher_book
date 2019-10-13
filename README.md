@@ -36,7 +36,7 @@ Lin UI 是基于 **微信小程序原生语法** 实现的组件库。遵循简�
 ## 讨论交流
 QQ群号：699501172 <br/>
 
-<img class="QR-img" style="height: 100px; width:100px" src="https://raw.githubusercontent.com/zhc525349965/fisher_book/master/app/image/QQ群.jpg">
+<img class="QR-img" style="height: 100px; width:100px" src="https://raw.githubusercontent.com/zhc525349965/fisher_book/master/app/image/qq群新.png">
 
 
 ## 微信公众号
