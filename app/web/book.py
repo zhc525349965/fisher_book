@@ -4,7 +4,7 @@
 #      Author: Mario
 #    Datetime: 2019-09-23 08:09
 
-from flask import request, render_template, flash
+from flask import request, render_template, flash, jsonify
 from flask_login import current_user
 
 from app.forms.book import SearchForm
@@ -77,5 +77,4 @@ def test():
         'name': 'Mario',
         'age': 18
     }
-    flash('Hello,Mario', category='test')
-    return render_template('test.html', data=r)
+    return jsonify(r)
