@@ -6,8 +6,10 @@
 from flask import current_app
 
 from app.models.base import Base
-from sqlalchemy import Column, Integer, Boolean, ForeignKey, String
+from sqlalchemy import Column, Integer, Boolean, ForeignKey, String, desc
 from sqlalchemy.orm import relationship
+
+from app.spider.yushu_book import YuShuBook
 
 
 class Gift(Base):
@@ -22,7 +24,14 @@ class Gift(Base):
     # 字符串类型，长度15 不可为空
     isbn = Column(String(15), nullable=False)
 
-    def recent(self):
-        recent_gift = Gift.query.filter_by(launched=False).group_by(Gift.isbn).order_by(Gift.create_time).limit(
+    @property
+    def book(self):
+        yushu_book = YuShuBook()
+        yushu_book.search_by_isbn(self.isbn)
+        return yushu_book.first
+
+    @classmethod
+    def recent(cls):
+        recent_gift = Gift.query.filter_by(launched=False).group_by(Gift.isbn).order_by(desc(Gift.create_time)).limit(
             current_app.config['RECENT_BOOK_COUNT']).distinct().all()
         return recent_gift
