@@ -13,7 +13,9 @@ from flask_login import login_required, current_user
 @web.route('/my/gifts')
 @login_required
 def my_gifts():
-    return 'my gifts'
+    uid = current_user.id
+    gifts_of_mine = Gift.get_user_gift(uid)
+    isbn_list = [gift.isbn for gift in gifts_of_mine]
     pass
 
 
