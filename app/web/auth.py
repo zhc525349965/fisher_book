@@ -30,7 +30,7 @@ def login():
         if user and user.check_password(form.password.data):
             login_user(user, remember=True)
             next_url = request.args.get('next')
-            if not next or not next_url.startswith('/'):
+            if not next or not next_url or not next_url.startswith('/'):
                 next_url = url_for('web.index')
             return redirect(next_url)
         else:
