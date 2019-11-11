@@ -77,3 +77,8 @@ app/models/__pycache__/
 app/spider/__pycache__/
 __pycache__/
 app/__pycache__/
+app/forms/__pycache__/book.cpython-37.pyc
+app/forms/__pycache__/book.cpython-37.pyc
+app/web/__pycache__/__init__.cpython-37.pyc
+app/web/__pycache__/book.cpython-37.pyc
+app/web/__pycache__/create_blueprint.cpython-37.pyc
