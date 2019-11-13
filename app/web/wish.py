@@ -12,9 +12,10 @@ from app.web.create_blueprint import web
 
 
 @web.route('/my/wish')
+@login_required
 def my_wish():
     uid = current_user.id
-    wishes_of_mine = Wish.get_user_gift(uid)
+    wishes_of_mine = Wish.get_user_wishes(uid)
     isbn_list = [wish.isbn for wish in wishes_of_mine]
     gift_count_list = Wish.get_gifts_counts(isbn_list)
 
