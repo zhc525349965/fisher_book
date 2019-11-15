@@ -2,7 +2,7 @@
  Created by 七月 on 2018/1/26.
  微信公众号：林间有风
 """
-from app.forms.auth import RegisterForm, LoginFrom
+from app.forms.auth import RegisterForm, LoginFrom, EmailForm
 from app.models.base import db
 from app.models.user import User
 from app.web.create_blueprint import web
@@ -40,7 +40,12 @@ def login():
 
 @web.route('/reset/password', methods=['GET', 'POST'])
 def forget_password_request():
-    pass
+    form = EmailForm(request.form)
+    if request.method == 'POST':
+        if form.validate():
+            account_email = form.email.data
+            user = User.query.filter_by(email=account_email).first_or_404()
+    return render_template('auth/forget_password_request.html',form=form)
 
 
 # 单元测试
