@@ -45,6 +45,8 @@ def forget_password_request():
         if form.validate():
             account_email = form.email.data
             user = User.query.filter_by(email=account_email).first_or_404()
+            from app.libs.email import send_mail
+            send_mail()
     return render_template('auth/forget_password_request.html', form=form)
 
 

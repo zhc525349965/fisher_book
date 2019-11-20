@@ -13,6 +13,7 @@ flask-sqlalchemy = "*"
 pycryptodome = "*"
 crypto = "*"
 pygame = "*"
+flask-mail = "*"
 
 [requires]
 python_version = "3.7"
