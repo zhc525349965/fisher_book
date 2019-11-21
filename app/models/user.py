@@ -3,6 +3,8 @@
 # Description: $Description$
 #      Author: Mario
 #    Datetime: 2019-10-05 11:43
+from flask import current_app
+
 from app.libs.helper import is_isbn_or_key
 from app.models.base import Base
 from sqlalchemy import Column, Integer, String, Boolean, Float
@@ -12,6 +14,7 @@ from app import login_manager
 from app.models.gift import Gift
 from app.models.wish import Wish
 from app.spider.yushu_book import YuShuBook
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
 
 class User(Base, UserMixin):
@@ -65,7 +68,14 @@ class User(Base, UserMixin):
         else:
             return False
 
+    def generate_token(self, expiration=600):
+        s = Serializer(current_app.config['SECRET_KEY'], expiration)
+        return s.dumps({'id': self.id}).decode('utf-8')
 
-@login_manager.user_loader
-def get_user(uid):
-    return User.query.get(int(uid))
+    @staticmethod
+    def reset_password(new_password):
+        pass
+
+    @login_manager.user_loader
+    def get_user(uid):
+        return User.query.get(int(uid))
