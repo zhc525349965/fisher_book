@@ -3,6 +3,7 @@
  微信公众号：林间有风
 """
 from app.forms.auth import RegisterForm, LoginFrom, EmailForm, ResetPasswordForm
+from app.libs.email import send_mail
 from app.models.base import db
 from app.models.user import User
 from app.web.create_blueprint import web
@@ -45,8 +46,8 @@ def forget_password_request():
         if form.validate():
             account_email = form.email.data
             user = User.query.filter_by(email=account_email).first_or_404()
-            from app.libs.email import send_mail
             send_mail(form.email.data, '重置你的密码', 'email/reset_password.html', user=user, token=user.generate_token())
+            flash(f'一封邮件已发送到您的邮箱{account_email},请及时查收！')
     return render_template('auth/forget_password_request.html', form=form)
 
 
