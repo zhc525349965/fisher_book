@@ -6,7 +6,7 @@
 from flask import current_app
 
 from app.libs.helper import is_isbn_or_key
-from app.models.base import Base
+from app.models.base import Base, db
 from sqlalchemy import Column, Integer, String, Boolean, Float
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -73,8 +73,17 @@ class User(Base, UserMixin):
         return s.dumps({'id': self.id}).decode('utf-8')
 
     @staticmethod
-    def reset_password(new_password):
-        pass
+    def reset_password(token, new_password):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            data = s.loads(token.encode('utf-8'))
+        except:
+            return False
+        uid = data.get('id')
+        with db.auto_commit():
+            user = User.query.get(uid)
+            user.password = new_password
+        return True
 
     @login_manager.user_loader
     def get_user(uid):
