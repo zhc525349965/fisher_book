@@ -8,6 +8,7 @@ from app.web.create_blueprint import web
 
 @web.route('/drift/<int:gid>', methods=['GET', 'POST'])
 def send_drift(gid):
+    return '你想要啥？'
     pass
 
 
