@@ -12,6 +12,7 @@ from app.models.base import db
 from app.models.drift import Drift
 from app.models.gift import Gift
 from app.view_models.book import BookViewModel
+from app.view_models.drift import DriftCollection
 from app.web.create_blueprint import web
 
 
@@ -41,9 +42,12 @@ def send_drift(gid):
 @web.route('/pending')
 @login_required
 def pending():
-    drifts = Drift.query.filter(or_(Drift.requester_id == current_user.id, Drift.gifter_id == current_user.id)).order_by(
+    drifts = Drift.query.filter(
+        or_(Drift.requester_id == current_user.id, Drift.gifter_id == current_user.id)).order_by(
         desc(Drift.create_time)).all()
-    pass
+
+    views = DriftCollection(drifts, current_user.id)
+    return render_template('pending.html', drifts=views.data)
 
 
 @web.route('/drift/<int:did>/reject')
