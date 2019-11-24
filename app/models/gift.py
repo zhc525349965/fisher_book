@@ -24,6 +24,9 @@ class Gift(Base):
     # 字符串类型，长度15 不可为空
     isbn = Column(String(15), nullable=False)
 
+    def is_yourself_gift(self, uid):
+        return True if self.uid == uid else False
+
     @property
     def book(self):
         yushu_book = YuShuBook()

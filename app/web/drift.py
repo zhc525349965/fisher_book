@@ -2,14 +2,28 @@
  Created by 七月 on 2018/1/26.
  微信公众号：林间有风
 """
+from flask import flash, redirect, url_for, render_template
+from flask_login import login_required, current_user
 
+from app.models.gift import Gift
 from app.web.create_blueprint import web
 
 
 @web.route('/drift/<int:gid>', methods=['GET', 'POST'])
+@login_required
 def send_drift(gid):
-    return '你想要啥？'
-    pass
+    current_gift = Gift.query.get_or_404(gid)
+
+    if current_gift.is_yourself_gift(current_user.id):
+        flash('这本书是你自己的，不能向自己所要书籍')
+        return redirect(url_for('web.book_detail', isbn=current_gift.isbn))
+
+    can = current_user.can_send_drift()
+    if not can:
+        return render_template('not_enough_beans.html', beans=current_user.beans)
+
+    gifter = current_gift.user.summary
+    return render_template('drift.html', gifter=gifter, user_beans=current_user.beans)
 
 
 @web.route('/pending')

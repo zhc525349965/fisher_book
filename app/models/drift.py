@@ -3,7 +3,7 @@
 # Description: $Description$
 #      Author: Mario
 #    Datetime: 2019-11-24 10:08
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, SmallInteger
 
 from app.models.base import Base
 
@@ -31,3 +31,5 @@ class Drift(Base):
     gifter_id = Column(Integer)
     gift_id = Column(Integer)
     gifter_nickname = Column(String(20))
+
+    pending = Column('pending', SmallInteger, default=1)
