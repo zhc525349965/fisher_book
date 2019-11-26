@@ -26,7 +26,6 @@
 .idea/**/gradle.xml
 .idea/**/libraries
 
-app/secure.py
 .idea
 
 # Gradle and Maven with auto-import
