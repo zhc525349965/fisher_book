@@ -12,7 +12,7 @@ Wechat组件有单图展示和多图展示两种情景。两种情景下图片�
 
 ### 1 单图展示
 
-所传url数组长度为1时，为单图展示。组件将所传图片等比压缩，长边压缩/拉伸至360rpx(默认值)，缩放模式为`aspectFit`(默认值)。
+当url数组长度为1时，为单图展示。组件将所传图片等比压缩，长边压缩/拉伸至360rpx(默认值)，缩放模式为`aspectFit`(默认值)。
 `single-image-long-side`属性可以更改长边长度,通过`mode-single`属性更改单图展示时，图片的缩放模式。
 可以通过设置外部样式类`l-single-image-class`覆盖单图展示下图片的样式。
 > 朋友圈组件只包含图片部分，其他部分展示代码为展示用。
@@ -94,8 +94,8 @@ data: {
 
 ### 2 多图展示
 
-多图模式下，组件自动按照朋友圈样式进行布局。图片展示为边长`158rpx`的正方形缩略图,图片裁剪模式为`aspectFill`,图片之间间隔为`10rpx`。
-属性`size`可以更改多图展示下每张图片的边长。属性`mode-multiple`可以更改多图展示下的图片裁剪模式。`gap-row`和`gap-colum`分别设置多图展示时图片水平间距和竖直间距。
+当url数组长度为大于1时，为多图展示。多图展示时，组件自动按照朋友圈样式进行布局。图片展示为边长`158rpx`的正方形缩略图,图片裁剪模式为`aspectFill`,图片之间间隔为`10rpx`。
+属性`size`可以更改多图展示下每张图片的边长。属性`mode-multiple`可以更改多图展示下的图片裁剪模式。`gap-row`和`gap-column`分别设置多图展示时图片水平间距和竖直间距。
 可以通过外部样式类`l-multi-image-class`覆盖多图展示时，图片的样式。
 
 示例代码
@@ -131,7 +131,7 @@ data: {
 }
 ```
 
-##  属性urls
+##  urls
 
 urls属性接收两种形式的传值方式。
 
@@ -158,7 +158,12 @@ urls属性接收两种形式的传值方式。
 
 ## 图片尺寸 size
 
-通过设置`size`属性来更改多图展示时，图片的大小。默认值为`158`，单位`rpx`。同时，支持通过外部样式类`l-multi-image-class`修改多图模式下的图片样式。
+### 单图展示
+通过设置 `single-image-long-side`属性更改单图展示时，图片长边显示的长度。默认值为`360`，单位`rpx`。同时，支持通过外部样式类`l-single-image-class`修改单图展示时图片的样式。
+
+### 多图展示
+
+通过设置`size`属性来更改多图展示时，图片的边长。默认值为`158`，单位`rpx`。同时，支持通过外部样式类`l-multi-image-class`修改多图展示时的图片样式。
 
 ### 示例代码
 
@@ -197,9 +202,11 @@ data: {
 }
 ```
 
-## 图像间隔 gap-row gap-colum
+## 图像间隔 gap-row gap-column
 
-通过设置`gap-row`和`gap-colum`属性来更改多图模式下，图片的水平间隔和竖直间隔，默认值为`10`，单位为`rpx`;
+> 仅在多图展示时生效
+
+通过设置`gap-row`和`gap-column`属性来更改多图模式下，图片的水平间隔和竖直间隔，默认值为`10`，单位为`rpx`;
 
 ### 示例代码
 
@@ -208,7 +215,7 @@ data: {
 ```wxml
 <l-wechat l-class="image" urls='{{urls4}}'></l-wechat>
 <view class="line"></view>
-<l-wechat l-class="image" urls='{{urls4}}' gap-row='20' gap-colum='20'></l-wechat>
+<l-wechat l-class="image" urls='{{urls4}}' gap-row='20' gap-column='20'></l-wechat>
 ```
 
 ```js
