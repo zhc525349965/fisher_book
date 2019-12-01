@@ -284,7 +284,7 @@ urls4: ['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=157
 |:----|:----|:----|:----|:----|
 | urls	| 图片的urls	| Array | - | - |
 | preview	| 图片是否可预览  | Boolean| `true`,`false` | `true` |
-| size	| 多图展示时的图片大小 |	String | - | 158 |
+| size	| 多图展示时的图片大小 |	Number | - | 158 |
 | gap-row	| 多图展示时图片横向间隔 | Number |	- | 10 |
 | gap-column	| 多图展示时图片竖向间隔 | Number |	- | 10 |
 | single-image-long-side | 单图展示时，长边的长度 | Number | - | 360 |
@@ -295,7 +295,7 @@ urls4: ['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=157
 ## 外部样式类（Wechat ExternalClasses）
 | 外部样式类名 | 说明 | 备注 |
 | :--------- | :----------------- | :----- |
-| l-class | 覆盖组件整体的样式 | String |- |
+| l-class | 覆盖组件整体的样式 | - |
 | l-single-image-class | 覆盖组件单图展示时图片样式 |- |
 |l-multi-image-class|覆盖组件多图展示时图片样式|- |
 
