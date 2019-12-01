@@ -25,7 +25,7 @@
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
-
+app/setting.py
 .idea
 
 # Gradle and Maven with auto-import
