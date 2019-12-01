@@ -6,13 +6,15 @@ title: 朋友圈 Wechat
 
 > 用来展示图片，规则同微信朋友圈。
 
-## 图片模式
+## 图片展示
 
-Wechat组件支持两种模式，一种是单图模式，图片等比压缩；一种是多图模式，图片显示为正方形缩略图。两种模式组件通过传入urls属性的长度自动识别，无需单独指定。
+Wechat组件有单图展示和多图展示两种情景。两种情景下图片的设置互不影响。
 
-### 1 单图模式
+### 1 单图展示
 
-单图模式，将所传图片等比压缩，长边压缩至360rpx。可以通过设置外部样式类`l-one-image-class`覆盖单图模式下图片显示样式。
+所传url数组长度为1时，为单图展示。组件将所传图片等比压缩，长边压缩/拉伸至360rpx(默认值)，缩放模式为`aspectFit`(默认值)。
+`single-image-long-side`属性可以更改长边长度,通过`mode-single`属性更改单图展示时，图片的缩放模式。
+可以通过设置外部样式类`l-single-image-class`覆盖单图展示下图片的样式。
 > 朋友圈组件只包含图片部分，其他部分展示代码为展示用。
 
 示例代码
@@ -90,9 +92,11 @@ data: {
 
 ```
 
-### 2 多图模式
+### 2 多图展示
 
-多图模式下，组件自动按照朋友圈样式进行布局。
+多图模式下，组件自动按照朋友圈样式进行布局。图片展示为边长`158rpx`的正方形缩略图,图片裁剪模式为`aspectFill`,图片之间间隔为`10rpx`。
+属性`size`可以更改多图展示下每张图片的边长。属性`mode-multiple`可以更改多图展示下的图片裁剪模式。`gap-row`和`gap-colum`分别设置多图展示时图片水平间距和竖直间距。
+可以通过外部样式类`l-multi-image-class`覆盖多图展示时，图片的样式。
 
 示例代码
 
@@ -127,9 +131,9 @@ data: {
 }
 ```
 
-### 3 urls格式
+##  属性urls
 
-urls接收值可以有两种形式。
+urls属性接收两种形式的传值方式。
 
 - url数组，格式为
 
@@ -154,7 +158,7 @@ urls接收值可以有两种形式。
 
 ## 图片尺寸 size
 
-通过设置`size`属性来更改多图模式下，图片的大小。默认值为`158`，单位`rpx`。同时，支持通过外部样式类`l-multi-image-class`修改多图模式下的图片样式。
+通过设置`size`属性来更改多图展示时，图片的大小。默认值为`158`，单位`rpx`。同时，支持通过外部样式类`l-multi-image-class`修改多图模式下的图片样式。
 
 ### 示例代码
 
@@ -193,9 +197,9 @@ data: {
 }
 ```
 
-## 图像间隔 gapRow gapColum
+## 图像间隔 gap-row gap-colum
 
-通过设置`gapRow`和`gapColum`属性来更改多图模式下，图片的水平间隔和竖直间隔，默认值为`10`，单位为`rpx`;
+通过设置`gap-row`和`gap-colum`属性来更改多图模式下，图片的水平间隔和竖直间隔，默认值为`10`，单位为`rpx`;
 
 ### 示例代码
 
@@ -204,7 +208,7 @@ data: {
 ```wxml
 <l-wechat l-class="image" urls='{{urls4}}'></l-wechat>
 <view class="line"></view>
-<l-wechat l-class="image" urls='{{urls4}}' gapRow='20' gapColum='20'></l-wechat>
+<l-wechat l-class="image" urls='{{urls4}}' gap-row='20' gap-colum='20'></l-wechat>
 ```
 
 ```js
@@ -228,7 +232,8 @@ urls4: ['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=157
 
 ## 裁剪模式
 
-通过设置`modeOne`和`modeMultiple`属性来设置单图和多图模式下图片的裁剪模式。单图模式下`modeOne`默认值为`aspectFit`，多图模式下`modeMultiple`默认值为`aspectFill`。
+通过设置`mode-single`和`mode-multiple`属性来设置单图展示和多图展示时图片的裁剪模式。
+`mode-single`默认值为`aspectFit`，`mode-multiple`默认值为`aspectFill`。
 
 ### 示例代码
 
@@ -237,7 +242,7 @@ urls4: ['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=157
 ```wxml
 <l-wechat l-class="image" urls='{{urls4}}'></l-wechat>
 <view class="line"></view>
-<l-wechat l-class="image" urls='{{urls4}}' modeMultiple='aspectFit'></l-wechat>
+<l-wechat l-class="image" urls='{{urls4}}' mode-multiple='aspectFit'></l-wechat>
 ```
 
 ```js
@@ -259,31 +264,36 @@ urls4: ['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=157
 }
 ```
 
+## 预览 preview
+
+组件默认支持图片预览，可以通过设置属性`preview`关闭预览模式。
+
 ## 属性（Wechat Attributes）
 
 | 参数   | 说明 | 类型 | 可选值 | 默认值 |  
 |:----|:----|:----|:----|:----|
 | urls	| 图片的urls	| Array | - | - |
-| isPreview	| 图片是否可预览  | Boolean| `true`,`false` | `true` |
-| size	| 多图模式下的图片大小 |	String | - | 158 |
-| gapRow	| 多图模式下图片横向间隔 | Number |	- | 10 |
-| gapColum	| 多图模式下图片竖向间隔 | Number |	- | 10 |
-| modeOne	| 单图模式缩放裁剪模式 |	String	| 见[小程序image组件](https://developers.weixin.qq.com/miniprogram/dev/component/image.html) |`aspectFit`|
-| modeMultiple	| 多图模式缩放裁剪模式 |	String	| 见[小程序image组件](https://developers.weixin.qq.com/miniprogram/dev/component/image.html) |`aspectFill`|
+| preview	| 图片是否可预览  | Boolean| `true`,`false` | `true` |
+| size	| 多图展示时的图片大小 |	String | - | 158 |
+| gap-row	| 多图展示时图片横向间隔 | Number |	- | 10 |
+| gap-column	| 多图展示时图片竖向间隔 | Number |	- | 10 |
+| single-image-long-side | 单图展示时，长边的长度 | Number | - | 360 |
+| mode-single	| 单图模式缩放裁剪模式 |	String	| 见[小程序image组件](https://developers.weixin.qq.com/miniprogram/dev/component/image.html) |`aspectFit`|
+| mode-multiple	| 多图模式缩放裁剪模式 |	String	| 见[小程序image组件](https://developers.weixin.qq.com/miniprogram/dev/component/image.html) |`aspectFill`|
 
 
 ## 外部样式类（Wechat ExternalClasses）
 | 外部样式类名 | 说明 | 备注 |
 | :--------- | :----------------- | :----- |
-| l-class | 覆盖朋友圈组件整体的样式 | String |- |
-| l-one-image-class | 覆盖朋友圈组件单图模式下图片样式 |- |
-|l-multi-image-class|覆盖朋友圈组件多图模式下图片样式|- |
+| l-class | 覆盖组件整体的样式 | String |- |
+| l-single-image-class | 覆盖组件单图展示时图片样式 |- |
+|l-multi-image-class|覆盖组件多图展示时图片样式|- |
 
 
 ## 头像事件（Avatar Events）
 
 | 事件名称   | 说明   | 返回值   | 备注   | 
 |:----|:----|:----|:----|
-| bind:linpreview  | 预览图片时触发   | event.detail = {current:[ 当前点击项的url信息 ], all: [ 当前urls值 ], index: 点击项的下标}  |urls格式与传入的urls格式保持一致  | 
+| bind:lintap  | 点击图片时触发   | event.detail = {current:[ 当前点击项的url信息 ], all: [ 当前urls值 ], index: 点击项的下标}  |urls格式与传入的urls格式保持一致  | 
 
 <RightMenu />
