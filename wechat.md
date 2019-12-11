@@ -1,8 +1,8 @@
 ---
-title: 朋友圈 Wechat
+title: 相册 Picture-Album
 ---
 
-# <H2Icon/> 朋友圈 Wechat
+# <H2Icon/> 相册 Picture-Album
 
 > 用来展示图片，规则同微信朋友圈。
 
@@ -19,23 +19,23 @@ title: 朋友圈 Wechat
 
 ```wxml
 <view>
-    <view class="wechat">
+    <view class="picture-album">
         <l-avatar class="avatar" size='80' shape="square" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574067618442&di=b8474bcfaea4c13487e6aac9c3f66c84&imgtype=0&src=http%3A%2F%2Fimg14.360buyimg.com%2Fn1%2Fjfs%2Ft21772%2F172%2F702988837%2F107053%2F5e0f9964%2F5b1619e2N9a2189a8.jpg" />
         <view class="right">
             <view class="name">Lin-UI-27315</view>
             <view class='content'>一张横屏图片的展示，宽为360rpx。</view>
-            <l-wechat urls='{{urls1_1}}'></l-wechat>
+            <l-picture-album urls='{{urls1_1}}'></l-picture-album>
         </view>
     </view>
     <view class="line"></view>
 </view>
 <view>
-    <view class="wechat">
+    <view class="picture-album">
         <l-avatar class="avatar" size='80' shape="square" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574067618442&di=b8474bcfaea4c13487e6aac9c3f66c84&imgtype=0&src=http%3A%2F%2Fimg14.360buyimg.com%2Fn1%2Fjfs%2Ft21772%2F172%2F702988837%2F107053%2F5e0f9964%2F5b1619e2N9a2189a8.jpg" />
         <view class="right">
             <view class="name">Lin-UI-27315</view>
             <view class='content'>一张竖屏图片的展示，高为360rpx。</view>
-            <l-wechat urls='{{urls1_2}}'></l-wechat>
+            <l-picture-album urls='{{urls1_2}}'></l-picture-album>
         </view>
     </view>
     <view class="line"></view>
@@ -50,7 +50,7 @@ title: 朋友圈 Wechat
 ```
 
 ```wxss
-.wechat {
+.picture-album {
     display: flex;
     flex-direction: row;
 }
@@ -96,23 +96,23 @@ title: 朋友圈 Wechat
 
 ```wxml
 <view>
-    <view class="wechat">
+    <view class="picture-album">
         <l-avatar class="avatar" size='80' shape="square" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574067618442&di=b8474bcfaea4c13487e6aac9c3f66c84&imgtype=0&src=http%3A%2F%2Fimg14.360buyimg.com%2Fn1%2Fjfs%2Ft21772%2F172%2F702988837%2F107053%2F5e0f9964%2F5b1619e2N9a2189a8.jpg" />
         <view class="right">
             <view class="name">Lin-UI-27315</view>
             <view class='content'>多张图片展示，显示为边长158rpx的正方形。</view>
-            <l-wechat urls='{{urls2}}'></l-wechat>
+            <l-picture-album urls='{{urls2}}'></l-picture-album>
         </view>
     </view>
     <view class="line"></view>
 </view>
 <view>
-    <view class="wechat">
+    <view class="picture-album">
         <l-avatar class="avatar" size='80' shape="square" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574067618442&di=b8474bcfaea4c13487e6aac9c3f66c84&imgtype=0&src=http%3A%2F%2Fimg14.360buyimg.com%2Fn1%2Fjfs%2Ft21772%2F172%2F702988837%2F107053%2F5e0f9964%2F5b1619e2N9a2189a8.jpg" />
         <view class="right">
             <view class="name">Lin-UI-27315</view>
             <view class='content'>多张图片展示，自动按照朋友圈显示规则排序。</view>
-            <l-wechat urls='{{urls5}}'></l-wechat>
+            <l-picture-album urls='{{urls5}}'></l-picture-album>
         </view>
     </view>
     <view class="line"></view>
@@ -187,23 +187,23 @@ urls接收一个数组，数组内元素可以有两种格式。
 
 ```wxml
 <view>
-    <view class="wechat">
+    <view class="picture-album">
         <l-avatar class="avatar" size='80' shape="square" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574067618442&di=b8474bcfaea4c13487e6aac9c3f66c84&imgtype=0&src=http%3A%2F%2Fimg14.360buyimg.com%2Fn1%2Fjfs%2Ft21772%2F172%2F702988837%2F107053%2F5e0f9964%2F5b1619e2N9a2189a8.jpg" />
         <view class="right">
             <view class="name">Lin-UI-27315</view>
             <view class='content'>通过single-mode可以更改单图时图片裁剪、缩放的模式。示例为center模式。</view>
-            <l-wechat urls='{{urls1_1}}' single-mode='center'></l-wechat>
+            <l-picture-album urls='{{urls1_1}}' single-mode='center'></l-picture-album>
         </view>
     </view>
     <view class="line"></view>
 </view>
 <view>
-    <view class="wechat">
+    <view class="picture-album">
         <l-avatar class="avatar" size='80' shape="square" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574067618442&di=b8474bcfaea4c13487e6aac9c3f66c84&imgtype=0&src=http%3A%2F%2Fimg14.360buyimg.com%2Fn1%2Fjfs%2Ft21772%2F172%2F702988837%2F107053%2F5e0f9964%2F5b1619e2N9a2189a8.jpg" />
         <view class="right">
             <view class="name">Lin-UI-27315</view>
             <view class='content'>通过multiple-mode可以更改多图时图片裁剪、缩放的模式。示例为scaleToFill模式。</view>
-            <l-wechat urls='{{urls4}}' multiple-mode='scaleToFill'></l-wechat>
+            <l-picture-album urls='{{urls4}}' multiple-mode='scaleToFill'></l-picture-album>
         </view>
     </view>
     <view class="line"></view>
@@ -221,7 +221,7 @@ urls接收一个数组，数组内元素可以有两种格式。
     wxss文件同上
 ```
 
-## 属性（Wechat Attributes）
+## 属性（Picture-Album Attributes）
 
 | 参数   | 说明 | 类型 | 可选值 | 默认值 |  
 |:----|:----|:----|:----|:----|
@@ -235,7 +235,7 @@ urls接收一个数组，数组内元素可以有两种格式。
 | multiple-mode	| 多图时，图片缩放裁剪的模式 |	String	| 见[小程序image组件](https://developers.weixin.qq.com/miniprogram/dev/component/image.html) |`aspectFill`|
 
 
-## 外部样式类（Wechat ExternalClasses）
+## 外部样式类（Picture-Album ExternalClasses）
 | 外部样式类名 | 说明 | 备注 |
 | :--------- | :----------------- | :----- |
 | l-class | 覆盖组件整体样式的外部样式类 | - |
@@ -243,7 +243,7 @@ urls接收一个数组，数组内元素可以有两种格式。
 | l-multi-image-class  |覆盖组件多图时图片样式的外部样式类 |- |
 
 
-## 组件事件（Wechat Events）
+## 组件事件（Picture-Album Events）
 
 | 事件名称   | 说明   | 返回值   | 备注   | 
 |:----|:----|:----|:----|
